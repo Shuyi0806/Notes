@@ -46,6 +46,10 @@ git pull mycode master
 
 git push --force mycode master
 
-11.  上述配置都进行完成后，就可以利用VSCode打开mycode文件夹进行相关操作。此时任何在该文件夹下出现的改变，VSCode的“源代码管理”图标上都会出现相应发生改变的文件的数字。点击“源代码管理”图片后，会列出来所有发生改变的文件名称，在文本输入框输入提交的更改概述（不要中文），进行“提交”操作。提交成功后再“同步更改”，
+11.  上述配置都进行完成后，就可以利用VSCode打开mycode文件夹进行相关操作。此时任何在该文件夹下出现的改变，VSCode的“源代码管理”图标上都会出现相应发生改变的文件的数字。点击“源代码管理”图片后，会列出来所有发生改变的文件名称，在文本输入框输入提交的更改概述（不要中文），进行“提交”操作。提交成功后再“同步更改”。
 
 12.   提交完毕后检查GitHub的myrepo会发生相应的变化。如果没有变化，在VSCode中打开控制台（ctrl+`）选择“输出”，看是否有相关的错误提示，根据错误提示信息进行调整。 
+13.   当出现Failed to connect to github.com port 443 after 21069 ms: Timed out时，打开本地仓所在文件夹，进入git bash here,输入
+   git config --global --unset http.proxy
+   git config --global --unset https.proxy
+再输入git push即可
