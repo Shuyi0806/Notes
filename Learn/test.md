@@ -32,8 +32,11 @@ ssh-keygen -t rsa -C "myname@mymail.com"
 7. 打开GitHub上的myrepo仓库，进入setting，设置deploy keys，将id_rsa.pub中的内容粘贴进去即可。默认会生成该key对应的title为myname@mymail.com
 
 8.  绑定本地文件夹和GitHub仓库：
-
-git remote add mycode git@https://github.com/Shuyi0806/Note.git
+   
+使用HTTP：
+git remote add mycode https://github.com/Shuyi0806/Note.git
+使用SSH：
+git remote add mycode git@github.com:Shuyi0806/Notes.git
 
 9. 设置完成后可以做一下连接测试：
 
