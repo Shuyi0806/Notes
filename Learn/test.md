@@ -39,7 +39,7 @@ git remote add mycode git@https://github.com/Shuyi0806/Note.git
 
 ssh -T git@github.com
 
-10. 先进行一次拉取，再进行一次推送：
+10. 先进行一次拉取，再进行一次推送：(选做)
 
 git pull --rebase mycode master
 git pull mycode master
