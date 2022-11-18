@@ -1,0 +1,269 @@
+{
+    "root": {
+        "data": {
+            "id": "co1sobwyzw80",
+            "created": 1667390706381,
+            "text": "DOM重点"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "co1son6450o0",
+                    "created": 1667390730878,
+                    "text": "1.创建"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1sos1ljfk0",
+                            "created": 1667390741489,
+                            "text": "document.wrtie"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1sp0oz1y00",
+                            "created": 1667390760316,
+                            "text": "innerHTML"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1sp45y2oo0",
+                            "created": 1667390767873,
+                            "text": "createElement"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1spccmz2g0",
+                    "created": 1667390785692,
+                    "text": "2.增"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1spiinlds0",
+                            "created": 1667390799116,
+                            "text": "appendChild"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1spoji2600",
+                            "created": 1667390812228,
+                            "text": "insertBefore"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1spw1a2xs0",
+                    "created": 1667390828542,
+                    "text": "3.删"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1sq0f80340",
+                            "created": 1667390838091,
+                            "text": "removeChild"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1sqlw02a00",
+                    "created": 1667390884818,
+                    "text": "4.改"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1sqpnpku80",
+                            "created": 1667390893024,
+                            "text": "修改元素属性：src、href、title"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1sr8t8e940",
+                            "created": 1667390934717,
+                            "text": "修改普通元素内容：innerHTML、innerText"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1srrl5d8o0",
+                            "created": 1667390975587,
+                            "text": "修改表单元素：value、type、disabled"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1ss6gfb600",
+                            "created": 1667391007953,
+                            "text": "修改元素样式：style、className"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1ssrkr6eo0",
+                    "created": 1667391053927,
+                    "text": "5.查"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1ssuhdt400",
+                            "created": 1667391060253,
+                            "text": "DOM提供的API 方法：  getElementById、getElementsByTagName"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1st3rr1lk0",
+                            "created": 1667391080471,
+                            "text": "⭐H5提供的新方法： querySelector、querySelectorAll "
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1stdtmzfk0",
+                            "created": 1667391102353,
+                            "text": "⭐利用节点操作获取元素： 父(parentNode)、子(children)、兄(previousElementSibling、nextElementSibling)"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1sv0r274g0",
+                    "created": 1667391230628,
+                    "text": "6.属性操作"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1sv5dbey00",
+                            "created": 1667391240681,
+                            "text": "setAttribute：设置dom的属性值"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1svgc3vl40",
+                            "created": 1667391264552,
+                            "text": "getAttribute：得到dom的属性值"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1svk8eo8o0",
+                            "created": 1667391273035,
+                            "text": " removeAttribute：移除属性"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "co1svq3z80g0",
+                    "created": 1667391285828,
+                    "text": "7.实践操作"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "co1svu2yzmo0",
+                            "created": 1667391294475,
+                            "text": "onclick"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1svzd67k00",
+                            "created": 1667391305975,
+                            "text": "onmouseover"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1sw2i9eeo0",
+                            "created": 1667391312813,
+                            "text": "onmouseout"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1sw7gu0fk0",
+                            "created": 1667391323611,
+                            "text": "onfocus"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1swbi3zug0",
+                            "created": 1667391332395,
+                            "text": "onblur"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1swfils5s0",
+                            "created": 1667391341132,
+                            "text": "onmousemove"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1swm1z3vk0",
+                            "created": 1667391355364,
+                            "text": "onmouseup"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "co1swzbf3xk0",
+                            "created": 1667391384233,
+                            "text": "onmousedown"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}

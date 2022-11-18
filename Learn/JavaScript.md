@@ -1,79 +1,108 @@
-# javascript学习
+# javascript基础
 
-标题
---
 
- ##
+## 关键字var
+```var num=10;//声明一个变量num,并赋值为10 ```
+> *JavaScript 是一种弱类型或者说动态语言。*这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。
 
-标签（空格分隔）： 前端
 
----
-
-##关键字var
-    var num=10;//声明一个变量num,并赋值为10 
-
-##变量提升
+## 变量预解析（变量提升）
+> 变量的声明会被提升到当前作用域的最上面，变量的赋值不会提升
+```
     console.log(num);
     var num=10;
     //实际运行顺序：
     var num;
     console.log(num);//浏览器显示为undefined
+    num=10;
+```
+## 函数预解析（函数提升）
+> 函数的声明会被提升到当前作用域的最上面，但是不会调用函数。
+```
+fun()；
+var fun= function(){
+    console.log(22);//not is defind
+}
+//实际运行顺序：
+var fun;
+fun();
+fun=function(){
+    onsole.log(22);
+}
+```
 
-##javascript的输出方式
 
-
+## javascript的输出方式
+```
     alert("我是弹出框");
     document.write("我是输出到页面");
     console.log("在控制台输出");
-
-##javascript数据类型6种原始(基本)类型：
-数值、字符串、布尔值；null、undefined、对象{}
-引用、复合、合成类型：object(对象)
-
-
+```
+## javascript数据类型
+- 简单类型：
+number(数值）、string(字符串)、boolean(布尔值)；null、undefined,变量的数据直接存放在变量（栈空间）中,**变量在栈空间里的值复制了一份给形参，那么在方法内部对形参做任何修改，都不会影响到的外部变量**
+- 复杂/引用类型：
+通过 new 关键字创建的对象（系统对象、自定义对象），如 Object、Array、Date等,变量（栈空间）里存放的是地址，真正的对象实例存放在堆空间中,**变量在栈空间里保存的堆地址复制给了形参,操作的是同一个对象**
+```
+    var timer=null;
     var user{
     age:18;
     name;"wen";
     hunyin:false ;
     }
-
-##typeof运算符:判断基本数据类型
-
-
+```
+## typeof运算符:判断基本数据类型
+```
+    console.log(typeof timer);//object 返回空对象
     console.log(typeof age);//number
     console.log(typeof name);//string
     console.log(typeof hunyin);//boolean
-
+```
 null一般代表对象为“没有”，undefind一般代表数值为“没有”
 
-##算术运算符（+ - * / % ++ --）
-
-
+## 算术运算符（+ - * / % ++ --）
+> +号是拼接字符，——号隐式转换数字
+```
     var num=3;
     console.log(++num3);//4
     console.log(--num3);//2
 
-自增和自减有两种写法 ++num  num++
-++在前，先自增再运算  ++在后，先运算再自增
+    //++a先加再赋值
+    var a=10;
+    ++a;// ++a 11   a 11 
+    var b= ++a + 2;// ++a 12   a 12
+    console.log(b);//14
+    //c++先赋值再加
+    var c=10;
+    c++;// c++ 11   c 11
+    var d= c++ + 2;// c++ 11  c 12
+    console.log(d);//14
 
+    var e=10;
+    var b= e++ + ++e;//1.e++ 10  e 11  2. ++e 12  e 12
+    console.log(b);//22
+```
+自增和自减有两种写法 ++num  num++
+++在前，先自增再运算或赋值  ++在后，先运算或赋值再自增
+```
     var num4=10;
     console.log(++num4);//11,先自增再打印
     console.log(num4++);//10，先打印再自增
+```
 
 
-
-##赋值运算符（= += -= *= /= %=
-
+## 赋值运算符（= += -= *= /= %=
+```
     var x=10;
     var y=10;
     console.log(x+=y);//x=x+y=20
+```
 
 
-
-##比较运算符（> < >= <= ==相等 ===严格相等 != !==严格不相等)
+## 比较运算符（> < >= <= ==相等 ===严格相等 != !==严格不相等)
 严格相等：数值本身是否相等，类型本身是否相等
 
-##布尔运算符：布尔值取反，非布尔值取反
+## 布尔运算符：布尔值取反，非布尔值取反
 非布尔值取反：以下6个值(undefinded\null\false\0\NaN\空字符串(‘’)）取反后为true,其他为false
 且运算符（&&）
 或运算符（||）
@@ -81,12 +110,13 @@ null一般代表对象为“没有”，undefind一般代表数值为“没有�
 if...else:if总是找离他最近的else
 
 三目运算符可赋值给一个变量
+```
 var result = num % 2 === 0 ? "偶数" :"奇数";
 console.log(result);
-
+```
 字符串和数字相加：会显示一个字符串的格式"i=" + i => i=3
 
-
+```
     //打印九九乘法表
     sum=0;
     for(i=1;i<=9;i++){
@@ -96,7 +126,7 @@ console.log(result);
             document.write(i + "*" + j + '=' + sum + " ");
         }
     }
-
+```
 
 > 双引号不能嵌套双引号，单引号中嵌套单引号
 要输出带双引号的文本需要再引号前面加转义字符\
@@ -104,7 +134,7 @@ console.log(result);
 
 
 
-##字符串方法
+## 字符串方法
 1.返回字符串中的第n个字符：charAt(n)
 2.字符串长度：str.length
 3.连接字符串，返回新的字符串：concat( ，，，),可直接使用+连接字符
@@ -122,8 +152,8 @@ console.log(result);
   若分割规则为空字符串，则返回数组的成员是原字符串的每个字符
   若省略参数，则返回原字符串
   可接受第二个参数，返回数组的最大成员数
-
-##数组
+> 由于字符串的不可变，所以不要大量拼接字符串，字符串所有方法都不会修改字符串本身，操作完成会返回一个新的字符串。
+## 数组
 
  1. 除定义时赋值，还可以定义后赋值
  2. 任何类型都可以放在数组里
@@ -140,25 +170,34 @@ console.log(result);
  11. concat():多个数组的合并，将新数组添加到原数组后面，返回一个新数组
   也接受其他类型的值作为参数添加到数组尾部
   应用场景：上拉加载，合并数据
+```
   [1,2,3].concat(4,5,6)//[1,2,3,4,5,6]
   [1,2,3].concat(4,5,6,[7,8,9])//[1,2,3,4,5,6,7,8,9]
+```
  12. reverse():颠倒排序数组元素，返回改变后的数组，原数组会改变 实现字符串的翻转
- 13. indexOf():返回给定元素在数组中第一次出现的位置，没有则返回-1
+ 13. sort()：排序
+```
+arr.sort(function(a, b) {
+    return b - a;      // 降a序
+    // return a - b;   // 升序
+});
+```
+ 14. indexOf():返回给定元素在数组中第一次出现的位置，没有则返回-1
    第二个参数是开始搜索的位置
 
 
 
-##函数———一段可以反复调用的代码块
+## 函数———一段可以反复调用的代码块
 1.函数的声明：
-
+```
     function 函数名(参数){
     函数体；
     }
-
+```
 
 2.函数的调用：
 
-    函数名();
+```   函数名();```
 
 3.函数名的提升：可先调用后声明
 4.函数体里面return后面不能再加任何代码，因为不会执行
@@ -173,7 +212,65 @@ console.log(result);
   c.链式调用：对象里面的数据是对象
     对象名.对象名.属性
 
-  
+```
+//使用字面量创建对象(:)
+        var dog={
+            name : "name",
+            type : "alasijia",
+            age : 5,
+            color : "棕红色",
+            skill: function() {
+                console.log("shark");     
+            }
+        }
+
+//使用new object创建对象(=)
+        var obj =new Object();
+        obj.uname="zsf";
+        obj.ahe=18;
+        obj.sex="男";
+        obj.sayhi=Function(){
+            console.log("hi");
+        }
+        console.log(obj.uname);
+        console.log(obj['sex']);
+        obj.sayhi();
+
+//使用构造函数创建对象(=)
+//构造函数（类似于类）
+function Star(uname,age,sex){
+    this.name=uname;
+    this.age=age;
+    this.sex=sex;
+        }
+//创建对象（对象实例化）
+var ldh=new Star('刘德华',18,'男');//调用函数
+返回的是一个对象
+console.log(ldh.name)
+```
+
+- 使用构造函数创建对象（不用return就可以返回结果）
+
+1.声明语法规范
+function 构造函数名（）{
+    this.属性 = 值；
+    this.方法 = function(){
+
+    }
+}
+2.调用语法规范
+new 构造函数名();//调用函数就创建了一个对象
+3.for...in 语句用于对数组或者对象的属性进行循环操作。
+```
+for (变量 in 对象名字) {
+    console.log(k);      // 这里的 k 是属性名
+    console.log(obj[k]); // 这里的 obj[k] 是属性值
+
+}
+```
+
+> - 普通函数：封装代码
+> - 构造函数：封装对象里面一些相同的属性和方法
 6.Math对象————js的元素对象，提供各种数学功能
 
 > Math.abs():返回参数值的绝对值
@@ -200,60 +297,106 @@ console.log(result);
 
   
 
-##DOM
+# DOM
 
-##document对象——方法——获取元素
+console.dir()可以打印我们获取的元素对象，更好的查看对象里面的属性和方法。
 
->   getElementsByTagName()[]
-  getElementsByClassName()[]
-  getElementsByName()//使用率极低
-  getElementById()
-  querySelector()：接受一个CSS选择器作为参数
-  querySelectorAll()[]：返回一个NodeList对象，包含所有匹给定选择器的节点
+## document对象——方法——获取元素
+  - getElementsByName()//使用率极低
+  
+1.根据 ID 获取
+  - getElementById()//获取带有 ID 的元素对象
 
-##document对象——方法——创建元素
+2.根据标签名获取
+- getElementsByTagName()[]//返回带有指定标签名的对象的集合,如果获取不到元素,则返回为空的伪数组
 
->  createElement():创建元素
-  createTextNode():创建元素对应的文本信息
-  appendChild:将内容或者子元素放到容器中
-  createAttribute():创建元素属性
-  setAttributeNode():只能添加属性
+- element.getElementsByTagName('标签名')//获取某个元素(父元素)内部所有指定标签名的子元素,父元素必须是单个对象(必须指明是哪一个元素对象). 获取的时候不包括父元素自己。
+
+3.通过 HTML5 新增的方法获取
+  - getElementsByClassName()[]
+  - querySelector()：接受一个CSS选择器作为参数
+  - querySelectorAll()[]：返回一个NodeList对象，包含所有匹给定选择器的节点
+
+4.特殊元素获取
+- doucumnet.body  // 返回body元素对象
+- document.documentElement  // 返回html元素对象 
+
+## document对象——方法——创建元素
+
+-   createElement():创建元素
+-   createTextNode():创建元素对应的文本信息
+-   appendChild:将内容或者子元素放到容器中
+-   createAttribute():创建元素属性
+-   setAttributeNode():只能添加属性
 
  
 
 
  
-##Element对象——属性
+## Element对象——属性
 
-> Element对象对应网页的HTML元素，每个HTML元素，都会在DOM树上转化成一个Element节点对象
-   Element.id属性返回指定元素的id属性
-   Element.className属性用来读写当前元素节点的class属性，它的值是一个字符串，每个class用空格间隔开
-   Element.clasList
-    add():增加一个class
-    remove():移除一个class
-    contains():检查当前元素是否包含某个class
-    toggle():将某个class移入（不存在时）或移出（存在时）当前元素
-   Element.innerHTML():不设置内容则读取，设置内容则显示内容,可以识别标签
-   Element.innerText():不设置内容则读取，设置内容则显示内容，会把标签识别成字符串
+-  Element对象对应网页的HTML元素，每个HTML元素，都会在DOM树上转化成一个Element节点对象
+-    Element.id属性返回指定元素的id属性
+-    Element.className属性用来读写当前元素节点的class属性，它的值是一个字符串，每个class用空格间隔开
+-    Element.clasList
+-    add():增加一个class
+-    remove():移除一个class
+-    contains():检查当前元素是否包含某个class
+-    toggle():将某个class移入（不存在时）或移出（存在时）当前元素
 
+1.改变元素内容
+-    Element.innerHTML():不设置内容则读取，设置内容则显示内容,包括 html 标签，同时保留空格和换行 **w3c标准**
+-    Element.innerText():不设置内容则读取，设置内容则显示内容，去除 html 标签， 同时空格和换行也会去掉 **非标准**
    
+2.常用元素的属性操作
+-  innerText、innerHTML 改变元素内容
+-  src、href
+-  id、alt、title
+ 
+3.表单元素的属性操作
+type、value、checked、selected、disabled
+
+
+| querySelectorAll | getElementsByTagName |
+|  --------------  |  ------------------- |
+|    NodeList      |     HTMLCollection   |
+|   克隆，速度慢    |     索引，速度快      |
+|       静态        |       动态           |
+|   深度优先遍历算法 |   深度优先遍历算法    |
+
+4.元素样式属性操作
+- 行内样式操作：element.style
+- 类名样式操作：element.className//样式修改较多,会直接更改元素的类名，会覆盖原先的类名,**建议采用“原类名 新类名”的形式**
+
+5.自定义属性的操作
+-  获取属性值
+element.属性; //获取内置属性值
+element.getAttribute('属性'); //主要获得自定义的属性
+-  设置属性值
+element.属性 = ‘值’  //设置内置属性值。
+element.setAttribute('属性', '值'); //主要设置自定义的属性
+- 移除属性
+element.removeAttribute('属性');
+
+
+## Element获取元素位置
+
+-  clientHeight:获取元素高度包括padding,不包括border、margin
+-    clientWidth:获取元素宽度包括padding,不包括border、margin
+-    scrollHeight:元素总高度包括padding,不包括border、margin，包括溢出的不可见内容
+-    scrollWidth：:元素总宽度包括padding,不包括border、margin，包括溢出的不可见内容
+-    scrollLeft：元素水平滚动条向右滚动的像素数量
+-    scrollTop：元素垂直滚动条向右滚动的像素数量
+-    offsetHeight（动态获取）：元素的CSS垂直宽度（单位像素），包括元素本身的高度、padding和border
+-    offsetWeight（动态获取）：元素的CSS水平宽度（单位像素），包括元素本身的高度、padding和border
+-    offsetLeft：到定位父级左边界的间距
+-    offsetTop：到定位父级上边界的间距
+-    offsetParent:返回定位的父亲
+-    parentNode:返回最近一级父亲
+> 获取元素大小位置->用offset更合适,  给元素更改值->用style改变
    
-##Element获取元素位置
 
-> clientHeight:获取元素高度包括padding,不包括border、margin
-   clientWidth:获取元素宽度包括padding,不包括border、margin
-   scrollHeight:元素总高度包括padding,不包括border、margin，包括溢出的不可见内容
-   scrollWidth：:元素总宽度包括padding,不包括border、margin，包括溢出的不可见内容
-   scrollLeft：元素水平滚动条向右滚动的像素数量
-   scrollTop：元素垂直滚动条向右滚动的像素数量
-   offsetHeight：元素的CSS垂直宽度（单位像素），包括元素本身的高度、padding和border
-   offsetWeight：元素的CSS水平宽度（单位像素），包括元素本身的高度、padding和border
-   offsetLeft：到定位父级左边界的间距
-   offsetTop：到定位父级上边界的间距
-
-   
-
-##CSS操作
+## CSS操作
 
     
 
@@ -277,7 +420,7 @@ console.log(result);
 
     
 
-##事件处理程序
+## 事件处理程序
  1）HTML事件处理：缺点：HTML和JS没有分开
  
     <div id="div">
@@ -321,21 +464,21 @@ console.log(result);
     btn.removeEventListener("click",function(){
     }
 
-###DOM事件流——事件传播的过程（3个阶段）
+### DOM事件流——事件传播的过程（3个阶段）
 JS代码中只能执行不好或冒泡其中一个阶段。
 1.**捕获阶段（很少关心）**——逐级向下传播到最具体的元素,addEventListener第三个参数为true document->html->body->father->son,
 2.**当前目标阶段**
 3.**冒泡阶段（更关注）**——逐级向上传播到最顶层节点（onclick),addEventListener第三个参数为false son->father->body->html->document
 注：有些事件没有冒泡：onblur、onfocus、onmouseenter、onmouseleave
 
-###事件对象
+### 事件对象
 1.写到监听函数的小括号里，当形参来看
 2.是事件一系列相关数据的集合，系统自动创建，不需要我们传递参数
 
-##target和this区别
-target返回的是触发事件的对象，this返回的是绑定事件的对象
+## target和this区别
+target返回的是**触发事件**的对象，this返回的是**绑定事件**的对象
 
-##鼠标事件
+## 鼠标事件（如果使用addEventListener 不需要加 on）
 
 > onclick:单击事件
     ondbclick:双击事件
@@ -350,27 +493,27 @@ target返回的是触发事件的对象，this返回的是绑定事件的对象
 
     
 
-##event事件对象——事件发生后，会产生一个事件对象，作为参数传给监听函数
+## event事件对象——事件发生后，会产生一个事件对象，作为参数传给监听函数
 
 > 1）Event对象属性
     Event.target返回事件当前所在节点
     Event.type返回一个字符串，表示事件类型，只读
  2）Event对象方法
     Event.preventDefault():取消浏览器对当前事件的默认行为
-    Event.stopPropagation()：阻止事件在DOM中继续传播，防止再触发定义在别的节点上的监听函数，但是不包括在当前节点上的其他的事件监听函数
+    Event.stopPropagation()：**阻止事件冒泡**阻止事件在DOM中继续传播，防止再触发定义在别的节点上的监听函数，但是不包括在当前节点上的其他的事件监听函数
 
 
 
-##键盘事件
+## 键盘事件（如果使用addEventListener 不需要加 on）
 
 > 1)onkeydown:按下时触发
- 2)onkeypress：按下有值的(数字和字母）键触发，ctrl这样无值的键不会触发，对有值的键，先触发keydown,再触发kepress
+ 2)onkeypress（少用）：按下有值的(数字和字母）键触发，ctrl这样无值的键不会触发，对有值的键，先触发keydown,再触发kepress
  3)onkeyup：松开键盘时触发,获取输入框的值
- 4）keycode代表每个按键的唯一标识，回车是13
-
+ 4）keycode：能区分大小写，返回不同的ASCII值
+ 5）三个事件的执行顺序是： keydown --  keypress  --- keyup
 
  
-##表单事件——在使用表单元素及输入框元素可以监听的一系列事件
+## 表单事件——在使用表单元素及输入框元素可以监听的一系列事件
 
 > 1）input事件(oninput)：实时输入实时获取
  2）select事件(onselect)：选中内容时触发
@@ -381,18 +524,42 @@ target返回的是触发事件的对象，this返回的是绑定事件的对象
                                                            
 
 
-## 事件代理
+## 事件代理（委托、委派）
 
-> 将子元素交给父元素处理，利用点击子元素会触发父元素这个特性来通过父元素监听每一个子元素的事件
+> 将子元素交给父元素处理，利用点击子元素会触发父元素这个特性（利用冒泡原理）来通过父元素监听每一个子元素的事件
 
 > 给父元素添加事件，通过子元素触发，同时通过event 对象还获取每个对应所点的标签的行为
+> 作用：提高了程序的性能
+
+# BOM
+1.BOM 缺乏标准，兼容性较差
+2.window 对象是浏览器的顶级对象，JS 访问浏览器窗口的一个接口，还是一个全局变量
+3.window下的一个特殊属性 window.name
+4.window:document、location、navigation、screen、history
+
+## window 对象的常见事件
+### 窗口加载事件
+1.window.onload 传统注册事件方式 只能写一次，如果有多个，会以最后一个 window.onload 为准
+2.如果使用 addEventListener 则没有限制
+```
+document.addEventListener('loadd',function(){})//
+document.addEventListener('DOMContentLoaded',function(){})//DOM加载完毕就可执行，页面的图片很多,用DOMContentLoaded
+```
+### 调整窗口大小事件
+```
+window.onresize = function(){}
+window.addEventListener("resize",function(){});
+```
 
 ## 定时器
 ### setTimeout(函数，延时时间)
 > 如果回调函数是对象的方法，那么setTimeout使得方法内部的this关键字指向全局变量，而不是定义时所在的那个对象
 
 ```
-var name = “sxt”
+function cakback(){
+    console.log("爆炸了");
+}
+setTimeout(callback,3000);
 ```
 
 cleanrTimeout(timer) 用于取消定时器
@@ -402,7 +569,25 @@ cleanrTimeout(timer) 用于取消定时器
 
 cleanerInterval() 用于取消定时器
 
+### this
+1. 全局作用域或者普通函数中this指向全局对象window（注意定时器里面的this指向window）
+2. 方法调用中谁调用this指向谁
+3. 构造函数中this指向构造函数的实例
 
+## JS 执行机制
+1. JS 是单线程
+### 同步和异步
+同步任务——都在主线程上执行，形成一个执行栈
+异步任务——通过回调函数实现的，回调函数添加到任务队列（消息队列）中
+一般而言，异步任务有以下三种类型:
+1、普通事件，如 click、resize 等
+2、资源加载，如 load、error 等
+3、定时器，包括 setInterval、setTimeout 等
+### 执行机制
+1. 先执行执行栈中的同步任务。
+2. 异步任务（回调函数）放入任务队列中。
+3. 一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行。
+> 由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为**事件循环（ event loop）**
 
 ## 防抖(debounce)
 在某个时间期限内，事件处理函数只执行一次，严格上属于性能优化
@@ -434,7 +619,7 @@ function
 > 2. PowerShell
 
 
-##闭包
+## 闭包
 作用：将局部变量转变成全局变量
 
  1. 变量的作用域
@@ -453,7 +638,7 @@ function
  > - 可以读取函数内部的变量
  > - 让这些变量的值始终保持在内存中
 
-##Babel转码器
+## Babel转码器
 
 > 可以将ES6转换成ES5
 
@@ -465,19 +650,19 @@ function
   [1]: https://caniuse.com
   [2]: https://babejs.io
   
-###安装Babel
+### 安装Babel
 
     npm install --save-dev @babel/core
 
-###安装Babel转码规则
+### 安装Babel转码规则
 
     npm install --save-dev @babel/preset-env
 
-###安装Babel命令行转码工具
+### 安装Babel命令行转码工具
 
     npm install --save-dev @babel/cli
 
-###Babel命令行转码
+### Babel命令行转码
 ```
 # 转码结果输出到标准输出（就是打印出来内部代码）
 $ npx babel example.js
@@ -498,7 +683,7 @@ $ npx babel src -d lib
 $ npx babel src -d lib -s
 ```
 
-##Let命令
+## Let命令
 
 > 用来声明变量，用法相当于var,但作用域只在代码块内
 
@@ -515,7 +700,7 @@ for(let i=0;i<10;i++)//每次都是新的i
 >let:2.let不存在变量提升
 >let:3.let不存在重复声明
 
-##Const命令
+## Const命令
 
 > 1.声明一个只读变量，一旦声明，常量的值就不能改变
 >2.一旦声明变量就必须初始化，不能留到以后赋值
@@ -524,7 +709,7 @@ for(let i=0;i<10;i++)//每次都是新的i
 >4.也不存在变量提升
 >5.不能重复声明
 
-##对象解构赋值
+## 对象解构赋值
 ```
 var user={
     name:"iwen",
@@ -545,7 +730,7 @@ console.log(user.age);
     
 3.将一个已经声明的变量用于解构赋值，要小心，建议不用
 
-##字符串扩展
+## 字符串扩展
 1.字符串Unicode表示法，允许采用\uxxxx表示一个字符，其中xxxx表示字符的Unicode码点
 2.字符串遍历器接口
 for...of循环遍历
@@ -563,7 +748,7 @@ let h1 = "<a href='"+url+"'>itbaizhan</a>"
 let h2 = `<a href='${url}'>itbaizhan</a>`
 ```
 
-##字符串ES6新增方法
+## 字符串ES6新增方法
 
 > 1.includes():返回布尔值，表示是否找到了参数字符串
 2.startsWith():返回布尔值，表示参数字符串是否在原字符串的头部
@@ -582,7 +767,7 @@ trimEnd():消除尾部空格
 7.at():接受一个整数作为参数，返回参数指定位置的字符，支持负索引（即倒数位置）
 如果超过字符串范围，则返回undefind
 
-##数组扩展——扩展运算符（spread)
+## 数组扩展——扩展运算符（spread)
 
 1.扩展运算符是三个点（...），将一个数组转为用逗号分隔的参数序列
 ```
@@ -597,7 +782,7 @@ var arr2 = [40,50,60];
 console.log([...arr1,...arr2]);//[10 20 30 40 50 60]
 ```
 
-##数组扩展——新增方法
+## 数组扩展——新增方法
 
  1.Array.from():用于将类数组转换为真正的数组
 
@@ -609,7 +794,7 @@ console.log([...arr1,...arr2]);//[10 20 30 40 50 60]
 2.Array.of():用于将一组值，转换为数组
 而Array(3)是创建数组空间
 
-##对象的扩展
+## 对象的扩展
 1.属性名和属性值是同样的变量名称就可以省略
 
     var name = "iwen"
@@ -647,7 +832,7 @@ console.log([...arr1,...arr2]);//[10 20 30 40 50 60]
     let n = {z}//{z:{...}}
     console.log(n);
     
-##函数的扩展——箭头函数
+## 函数的扩展——箭头函数
 基本用法：用箭头（=>)定义函数
 
     
@@ -718,7 +903,7 @@ console.log([...arr1,...arr2]);//[10 20 30 40 50 60]
     }
     user.getName();
     
-##Set数据结构
+## Set数据结构
 
 > 类似于数组，但是成员唯一，无重复
 set本身是一个构造函数，用来生成Set数据结构
@@ -747,7 +932,7 @@ delect():删除某个值，返回一个布尔值，表示删除是否
 has():返回一个布尔值，表示该值是否为Set的成员
 clear():清空所有成员，没有返回值
 
-##Promise对象
+## Promise对象
 
 > 简单来说就是个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果
 从语法上说，promise是一个对象，可以获取异步操作的消息
@@ -774,7 +959,7 @@ promise实例生成后，可以用then方法分别指定resolved状态和rejecte
     //failure
     });
     
-##JavaScript 严格模式(use strict)
+## JavaScript 严格模式(use strict)
 
 > 它不是一条语句，但是是一个字面量表达式,严格模式下你不能使用未声明的变量。
 
@@ -807,7 +992,7 @@ promise实例生成后，可以用then方法分别指定resolved状态和rejecte
  - static
  - yield
  
-##深浅拷贝
+## 深浅拷贝
 **浅拷贝**的意思就是只复制引用，而未复制真正的值。
 
 **深拷贝**就是对目标的完全拷贝，不像浅拷贝那样只是复制了一层引用，就连值也都复制了。只要进行了深拷贝，它们老死不相往来，谁也不会影响谁。
@@ -841,7 +1026,7 @@ Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指�
           return targetObj;
     }
     
-##执行上下文
+## 执行上下文
 执行上下文是评估和执行 JavaScript 代码的环境的抽象概念。每当 Javascript 代码在运行的时候，它都是在执行上下文中运行。
 
     //变量提升
@@ -874,13 +1059,13 @@ Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指�
 **函数执行上下文** —每当一个函数被调用时,都会为该函数创建一个新的上下文。每个函数都有它自己的执行上下文，不过是**在函数被调用时创建的。函数上下文可以有任意多个**。每当一个新的执行上下文被创建，它会按定义的顺序（将在后文讨论）执行一系列步骤。
 **Eval 函数执行上下文**—执行在eval函数内部的代码也会有它属于自己的执行上下文，少用，不讨论。
 
-###执行栈
+### 执行栈
 执行栈，也就是在其它编程语言中所说的“调用栈”，是一种拥有LIFO（后进先出）数据结构的栈，被用来存储代码运行时创建的所有执行上下文。
 当 JavaScript 引擎第一次遇到你的脚本时，它会创建一个全局的执行上下文并且压入当前执行栈。每**当引擎遇到一个函数调用**，它**会为该函数创建一个新的执行上下文并压入栈的顶部**。
 
-###怎么创建执行上下文？
+### 怎么创建执行上下文？
 创建执行上下文有两个阶段：1) 创建阶段 和 2) 执行阶段。
-####创建阶段
+#### 创建阶段
 **1.this 值的决定，即我们所熟知的 This 绑定。**
 在全局执行上下文中，this 的值指向全局对象。(在浏览器中，this引用 Window 对象)。
 在函数执行上下文中，this的值取决于该函数是如何被调用的。如果它被一个引用对象调用，那么 this 会被设置成那个对象，否则 this 的值被设置为全局对象或者 undefined（在严格模式下）。
@@ -905,14 +1090,14 @@ Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指�
 同样是一个词法环境，其环境记录器持有变量声明语句在执行上下文中创建的绑定关系。
 词法环境组件和变量环境的一个不同就是前者被用来存储函数声明和变量（let 和 const）绑定，而后者只用来存储 var 变量绑定。
 
-###变量对象
+### 变量对象
 变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。
-####全局上下文
+#### 全局上下文
 全局上下文中的变量对象就是全局对象。
-####函数上下文
+#### 函数上下文
 函数上下文用活动对象(activation object,AO)来表示变量对象。只有被激活的变量对象，活动对象上的各种属性才能被访问。
 活动对象是在进入函数上下文时刻被创建的，它通过函数的arguments属性初始化。arguments 属性值是 Arguments 对象。
-####执行过程
+#### 执行过程
 执行上下文的代码会分成两个阶段进行处理：分析和执行，我们也可以叫做：
 1.进入执行上下文
 > 这时候还没有执行代码，变量对象会包括：
@@ -942,176 +1127,21 @@ Object.assign() 拷贝的是属性值。假如源对象的属性值是一个指�
 3.在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值
 4.在代码执行阶段，会再次修改变量对象的属性值
 
-###作用域链
+### 作用域链
 
 > 对于每个执行上下文，都有三个重要属性：
 变量对象(Variable object，VO)、作用域链(Scope chain)、this
 当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，就会从父级(词法层面上的父级)执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样**由多个执行上下文的变量对象构成的链表就叫做作用域链。**
+通俗上讲，内部函数访问外部函数的变量，采取的是链式查找的方式来决定取哪个值，这种结构我们称为作用域链（就近原则）
 
 
-##Node.js——运行在服务端的 JavaScript
-基于 Chrome JavaScript 运行时建立的一个平台
-是一个事件驱动 I/O 服务端 JavaScript 环境
 
-###创建Node.js应用
-步骤一、引入 required 模块
-步骤二、创建服务器
 
-    var http = require('http');
-    http.createServer(function (request, response) {
-        // 发送 HTTP 头部 
-        // HTTP 状态值: 200 : OK
-        // 内容类型: text/plain
-        response.writeHead(200, {'Content-Type': 'text/plain'});
-        // 发送响应数据 "Hello World"
-        response.end('Hello World\n');
-    }).listen(8888);
-    // 终端打印如下信息
-    console.log('Server running at http://127.0.0.1:8888/');
-
-步骤三、开启服务
-
-    node server.js
-
-###NPM 使用介绍
-> 常见使用场景：
-允许用户从NPM服务器下载**别人编写的第三方包**到本地使用。
-允许用户从NPM服务器下载并安装**别人编写的命令行程序**到本地使用。
-允许用户**将自己编写的包或命令行程序上传**到NPM服务器供别人使用。
-
-使用 npm 命令安装常用的 Node.js web框架模块 express:
-
-    $ npm install express
-    
-###Node.js REPL(交互式解释器)
-类似 Windows 系统的终端或 Unix/Linux shell
-
-可以执行以下任务：
-读取 - 读取用户输入，解析输入的 Javascript 数据结构并存储在内存中。
-执行 - 执行输入的数据结构
-打印 - 输出结果
-循环 - 循环操作以上步骤直到用户两次按下 ctrl-c 按钮退出。
-
-###Node.js 回调函数
-Node.js 异步编程的直接体现就是回调。
-异步编程依托于回调来实现，但不能说使用了回调后程序就异步化了。
-
-回调函数在完成任务后就会被调用，Node 使用了大量的回调函数，Node 所有 API 都支持回调函数。
-
-例如，我们可以一边读取文件，一边执行其他命令，在文件读取完成后，我们将文件内容作为回调函数的参数返回。这样在执行代码时就没有阻塞或等待文件 I/O 操作。这就大大提高了 Node.js 的性能，可以处理大量的并发请求。
-
-回调函数一般作为函数的最后一个参数出现。
-
-###Node.js 事件循环
-
-> Node.js 是**单进程单线程应用程序**，但是因为V8引擎提供的**异步执行回调接口可以处理大量的并**发，所以性能非常高。
-Node.js 几乎每一个 API 都是支持回调函数的。
-Node.js 基本上所有的事件机制都是用设计模式中观察者模式实现。
-Node.js 单线程类似进入一个while(true)的事件循环，直到没有事件观察者退出，每个异步事件都生成一个事件观察者，如果有事件发生就调用该回调函数.
-
-###事件驱动程序
-Node.js 使用事件驱动模型
-1.当webserver接收到请求，就把它关闭然后进行处理，然后去服务下一个web请求。
-
-当这个请求完成，它被放回处理队列，当到达队列开头，这个结果被返回给用户。
-
-这个模型非常高效可扩展性非常强，因为 webserver 一直接受请求而不等待任何读写操作。（这也称之为非阻塞式IO或者事件驱动IO）
-
-在事件驱动模型中，会生成一个主循环来监听事件，当检测到事件时触发回调函数。
-
-    // 引入 events 模块
-    var events = require('events');
-    // 创建 eventEmitter 对象
-    var eventEmitter = new events.EventEmitter();
-     
-    // 创建事件处理程序
-    var connectHandler = function connected() {
-       console.log('连接成功。');
-      
-       // 触发 data_received 事件 
-       eventEmitter.emit('data_received');
-    }
-     
-    // 绑定 connection 事件处理程序
-    eventEmitter.on('connection', connectHandler);
-     
-    // 使用匿名函数绑定 data_received 事件
-    eventEmitter.on('data_received', function(){
-       console.log('数据接收成功。');
-    });
-     
-    // 触发 connection 事件 
-    eventEmitter.emit('connection');
-     
-    console.log("程序执行完毕。");
-
-###Node.js EventEmitter——核心就是事件触发与事件监听器功能的封装
-
-    var events = require('events');
-    var eventEmitter = new events.EventEmitter();
-    // 监听器 #1
-    var listener1 = function listener1() {
-       console.log('监听器 listener1 执行。');
-    }
-    // 监听器 #2
-    var listener2 = function listener2() {
-      console.log('监听器 listener2 执行。');
-    }
-    // 绑定 connection 事件，处理函数为 listener1 
-    eventEmitter.addListener('connection', listener1);
-    // 绑定 connection 事件，处理函数为 listener2
-    eventEmitter.on('connection', listener2);
-    var eventListeners = eventEmitter.listenerCount('connection');
-    console.log(eventListeners + " 个监听器监听连接事件。");
-    // 处理 connection 事件 
-    eventEmitter.emit('connection');
-    // 移除监绑定的 listener1 函数
-    eventEmitter.removeListener('connection', listener1);
-    console.log("listener1 不再受监听。");
-    // 触发连接事件
-    eventEmitter.emit('connection');
-    eventListeners = eventEmitter.listenerCount('connection');
-    console.log(eventListeners + " 个监听器监听连接事件。");
-    console.log("程序执行完毕。");
-    
-    $ node main.js
-    2 个监听器监听连接事件。
-    监听器 listener1 执行。
-    监听器 listener2 执行。
-    listener1 不再受监听。
-    监听器 listener2 执行。
-    1 个监听器监听连接事件。
-    程序执行完毕。
-
-我们一般要为会触发 error事件的对象设置监听器，避免遇到错误后整个程序崩溃。
-大多数时候我们不会直接使用 EventEmitter，而是在对象中继承它。包括 fs、net、 http 在内的，只要是支持事件响应的核心模块都是 EventEmitter 的子类。
-
-##Git_开源的分布式版本控制系统
+## Git_开源的分布式版本控制系统
 
 > 直接记录快照，重新生成一份文件，类似于备份，Git不再重新存储该文件，而是只保留一个链接指向之前存储的文件，空间换时间，只需要访问本地文件和资源
 
 Git的三个区域：工作区(untracked/unmodified-让工作区的文件都处于“未修改”的状态/modified/staged)，暂存区，Git仓库
 Git的三种状态：已修改（modified），已暂存（staged）,已提交（committed）
 
-##Node.js
-把代码进行模块化拆分的好处：
-提高了代码的复用性
-提高了代码的可维护性
-可以实现按需加载
 
-Node.js 中根据模块来源的不同，将模块分为了 3 大类，分别是：
- 1.内置模块
- 2.自定义模块
- 3.第三方模块(包）
-
-Node.js 遵循了 CommonJS模块化规范，CommonJS规定了模块的特性和各模块之间如何相互依赖。
-
-CommonJS 规定：
-1.每个模块内部，module 变量代表当前模块。
-2.module 变量是一个对象，它的 exports 属性（即 module.exports）是对外的接口。
-3.加载某个模块，其实是加载该模块的 module.exports 属性。require() 方法用于加载模块。
-
-模块加载机制：
-优先从缓存中加载
-内置模块的加载优先级最高
-加载自定义模块时，必须指定以 ./ 或 ../ 开头的路径标识符。在加载自定义模块时，如果没有指定 ./ 或 ../ 这样的路径标识符，则 node 会把它当作内置模块或第三方模块进行加载。
